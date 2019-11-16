@@ -1,27 +1,34 @@
 import { Router } from 'express';
+import Records from '../entities/Records';
 
 export default () => {
-	let api = Router();	
-  // perhaps expose some API metadata at the root
-  
+	const api = Router();	  
   // api/
-	api.post('/new', (req, res) => {
-    console.log(1, req.body);
-    if (req.body.email == "jaemin95@naver.com") {
+	api.post('/records/new', async (req, res) => {
+    try {
+      const newRecord = await Records.create({
+        p_name : req.body.pName,
+        p_email : req.body.pEmail,
+        p_birth : req.body.pBirth,
+        symptom : req.body.symptom,
+        prescription : req.body.prescription,
+        next_reserve_date : req.body.nextReserveDate,
+        h_id : req.body.hId,
+        h_email : req.body.hEmail,
+        });
       res.json({
-        type: 'P'
-      })
-    } else if (req.body.email == "yyw0078@naver.com") {
+        'result': 'success',
+        newRecord
+      });
+    } catch(e) {
       res.json({
-        type: 'G'
-      })
-    } else {
-      res.json({
-        type: 'H',
-        hId: '1',
-      })
+        'result': 'fail',
+        'error': e
+      });
     }
-	});
+
+    })
+
 
 	return api;
 }
