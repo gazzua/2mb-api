@@ -5,8 +5,9 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 // import db from './db';
 // import middleware from './middleware';
+import { initializeDB } from './entities';
 import api from './api';
-import config from './config.json';
+import config from './config';
 
 // db();
 // 
@@ -17,19 +18,23 @@ app.use(morgan('dev'));
 
 // 3rd party middleware
 app.use(cors({
-	exposedHeaders: config.corsHeaders
+	exposedHeaders: config.cors.headers
 }));
 
-app.use(bodyParser.json({
-	limit : config.bodyLimit
-}));
+app.use(bodyParser.json());
 
 
 // app.use(middleware({ config, db }));
+initializeDB('local')
+.then((result) => {
+  console.log('initialize DB result', result);
+});
+
+
 app.use('/api', api());
 
-app.listen(process.env.PORT || config.port, () => {
-	console.log(`Started on port ${config.port}`);
+app.listen(process.env.PORT || config.app.port, () => {
+	console.log(`Started on port ${config.app.port}`);
 });
 
 export default app;
