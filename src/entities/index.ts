@@ -3,15 +3,18 @@ import { Sequelize } from 'sequelize';
 
 import config from '../config';
 import SequelizeModelExtended from './SequelizeModelExtended';
+import Records from './Records';
 
 const state: State = {
   sequelize: undefined,
 };
 
 const SHOULD_BE_EXPORTED_AS_WELL__Models = { // eslint-disable-line
+  Records,
 };
 
 export {
+  Records,
 };
 
 export async function initializeDB(
@@ -39,7 +42,7 @@ export async function initializeDB(
     });
 
     initializeModels(Object.values(SHOULD_BE_EXPORTED_AS_WELL__Models), sequelize);
-    initializeAssociations(Object.values(SHOULD_BE_EXPORTED_AS_WELL__Models));
+    // initializeAssociations(Object.values(SHOULD_BE_EXPORTED_AS_WELL__Models));
    
     await sequelize.sync({
         // force: true,
