@@ -11,6 +11,10 @@ export default () => {
       res.json({
         type: 'P'
       })
+    } else if (req.body.email == "yyw0078@naver.com") {
+      res.json({
+        type: 'G'
+      })
     } else {
       res.json({
         type: 'H',
