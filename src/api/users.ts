@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 export default () => {
-	let api = Router();	
+	const api = Router();	
   // perhaps expose some API metadata at the root
   
   // api/

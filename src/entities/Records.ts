@@ -63,7 +63,7 @@ class Records extends SequelizeModelExtended {
       },
       {
         sequelize,
-        tableName: 'ORDER',
+        tableName: 'RECORDS',
         timestamps: true,
         underscored: true,
       },
