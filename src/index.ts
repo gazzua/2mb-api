@@ -7,6 +7,8 @@ import bodyParser from 'body-parser';
 import { initializeDB } from './entities';
 import api from './api';
 import config from './config';
+import swaggerSpec from './lib/swagger';
+import swaggerUi from 'swagger-ui-express';
 
 // db();
 // 
@@ -31,6 +33,9 @@ initializeDB('aws')
 
 
 app.use('/api', api());
+
+// swagger config
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.listen(process.env.PORT || config.app.port, () => {
 	console.log(`Started on port ${config.app.port}`);
