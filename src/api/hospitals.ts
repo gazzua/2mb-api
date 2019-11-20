@@ -4,7 +4,7 @@ import Records from '../entities/Records';
 /**
  * @swagger
  * tags:
- *   name: Hospitals
+ *   name: hospitals
  *   description:  병원 api
  */
 export default () => {
