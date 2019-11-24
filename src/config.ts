@@ -15,16 +15,6 @@ const config: Config = {
 	},
 	db: {
 	  default: {
-			aws: {
-				database: '2MB',
-				host: 'database-1.c31tm1exjazf.ap-northeast-2.rds.amazonaws.com',
-				password: '1234qwer',
-				poolMax: 5,
-				poolMin: 0,
-				port: 3306,
-				type: 'mysql',
-				username: 'admin',
-			},
 			local: {
 				database: '2MB',
 				host: 'localhost',

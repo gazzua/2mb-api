@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 
 // app.use(middleware({ config, db }));
-initializeDB('aws')
+initializeDB('local')
 .then((result) => {
   console.log('initialize DB result', result);
 });
