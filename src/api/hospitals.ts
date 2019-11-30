@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import objectHash from 'object-hash';
 import Records from '../entities/Records';
 
 /**
@@ -61,10 +62,16 @@ export default () => {
         next_reserve_date : req.body.nextReserveDate,
         h_id : req.body.hId,
         h_email : req.body.hEmail,
-        });
+      });
+      await Records.update({
+        ...newRecord,
+        hash : objectHash(newRecord, { algorithm: 'md5', encoding: 'base64' }),
+      },{
+        where: {id: newRecord.id},
+        silent: true 
+      });
       res.json({
         'result': 'success',
-        newRecord
       });
     } catch(e) {
       res.json({

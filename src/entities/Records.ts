@@ -17,6 +17,7 @@ class Records extends SequelizeModelExtended {
   public next_reserve_date: String; // 다음 예약 날짜
   public h_id: number;
   public h_email: String;
+  public hash: String;
   public created_at: Date;
   public updated_at: Date;
 
@@ -60,6 +61,10 @@ class Records extends SequelizeModelExtended {
           allowNull: false,
           type: DataTypes.STRING(256)
         },
+        hash: {
+          allowNull: true,
+          type: DataTypes.STRING(1024)
+        }
       },
       {
         sequelize,
