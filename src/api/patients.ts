@@ -4,16 +4,16 @@ import Records from '../entities/Records';
 /**
  * @swagger
  * tags:
- *   name: goverments
- *   description:  정부 api
+ *   name: patients
+ *   description:  환자 api
  */
 export default () => {
   const api = Router(); 
   /**
     * @swagger
-    * /api/goverments/records:
+    * /api/patients/records:
     *   get:
-    *     tags: [goverments]
+    *     tags: [patients]
     *     responses:
     *       200:
     *         description: 성공
